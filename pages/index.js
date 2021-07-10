@@ -1,9 +1,10 @@
+import { useEffect } from 'react';
+
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 import { Browser as Logtail } from '@logtail/js';
-console.log(process.env);
 const logger = new Logtail(process.env.NEXT_PUBLIC_LOGTAIL_SOURCE_TOKEN);
 
 export default function Home() {
@@ -20,6 +21,12 @@ export default function Home() {
       }
     )
   }
+
+  useEffect(() => {
+    fetch('/api/hello')
+      .then(res => res.json())
+      .then(data => logger.info("received a response from /api/hello", data))
+  });
 
   return (
     <div className={styles.container}>
