@@ -2,7 +2,7 @@
 
 import { Node as Logtail } from '@logtail/js';
 
-const logger = new Logtail(process.env.LOGTAIL_SOURCE_TOKEN);
+const logger = new Logtail(process.env.NEXT_PUBLIC_LOGTAIL_SOURCE_TOKEN);
 
 export default function handler(req, res) {
   const user = {
