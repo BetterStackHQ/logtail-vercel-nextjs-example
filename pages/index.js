@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     fetch('/api/hello')
       .then(res => res.json())
-      .then(data => logger.info("received a response from /api/hello", data))
+      .then(data => logger.info("Received a response from /api/hello", data))
   });
 
   return (
