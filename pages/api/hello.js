@@ -2,7 +2,7 @@
 
 import { Node as Logtail } from '@logtail/js';
 
-const logger = new Logtail(process.env.LOGTAIL_SOURCE_TOKEN);
+const logger = new Logtail(process.env.NEXT_PUBLIC_LOGTAIL_SOURCE_TOKEN);
 
 export default async function handler(req, res) {
   const user = {
@@ -15,5 +15,5 @@ export default async function handler(req, res) {
     { user } // you can log structured data
   );
 
-  res.status(200).json({ name: user.name })
+  res.status(200).json({ user })
 }
