@@ -10,10 +10,30 @@ export default async function handler(req, res) {
     name: 'John Doe',
   };
 
+  // Log an info message
   await logger.info(
     'Handling a request to /api/hello',
-    { user } // you can log structured data
+    { user } // structured logging
   );
 
-  res.status(200).json({ name: user.name })
+  // Log a warning message (e.g., deprecated API version)
+  await logger.warn(
+    'This API endpoint is using a deprecated version.',
+    { endpoint: '/api/hello', version: 'v1' }
+  );
+
+  // Log an error message (e.g., failed database connection)
+  await logger.error(
+    'Failed to connect to the database',
+    { dbHost: 'localhost', dbPort: 5432 }
+  );
+
+  // You can add more info logs when processing specific actions
+  await logger.info(
+    'Processing user data',
+    { userId: user.id, action: 'fetch user details' }
+  );
+
+  // Simulate successful completion of the request
+  res.status(200).json({ name: user.name });
 }
